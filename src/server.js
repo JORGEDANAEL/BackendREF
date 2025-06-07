@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 // Configuración de CORS
 const corsOptions = {
     
-  origin: ['https://frondrefac-3.onrender.com',  'http://127.0.0.1:5173'],
+  origin: ['http://localhost:5173','https://frondrefac-3.onrender.com',  'http://127.0.0.1:5173'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept']
@@ -37,12 +37,15 @@ const connectDB = async () => {
 connectDB();
 
 // Importar rutas
+
 const authRoutes = require('./routes/authRoutes');
 const refaccionRoutes = require('./routes/refaccionRoutes');
+const proveedoresRoutes = require('./routes/proveedores');
 
 // Usar rutas
 app.use('/api', authRoutes);
 app.use('/api', refaccionRoutes);
+app.use('/api', proveedoresRoutes);
 
 // Ruta principal
 app.get("/", (req, res) => {
