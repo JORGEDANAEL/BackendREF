@@ -3,33 +3,25 @@ const mongoose = require('mongoose');
 const refaccionSchema = new mongoose.Schema({
     nombre: { 
         type: String, 
-        required: [true, 'El nombre es obligatorio'],
-        trim: true
+        required: true 
     },
     descripcion: { 
         type: String,
-        required: [true, 'La descripción es obligatoria'],
-        trim: true
+        default: ''
     },
     precio: { 
         type: Number, 
-        required: [true, 'El precio es obligatorio'],
-        min: [0, 'El precio no puede ser negativo']
+        required: true,
+        min: 0
     },
     stock: { 
         type: Number, 
-        required: [true, 'El stock es obligatorio'],
-        min: [0, 'El stock no puede ser negativo']
+        required: true,
+        min: 0
     },
     categoria: { 
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Categoria',
-        required: [true, 'La categoría es obligatoria']
-    },
-    proveedor: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Proveedor',
-        required: [true, 'El proveedor es obligatorio']
+        type: String, 
+        required: true 
     }
 }, { timestamps: true });
 
